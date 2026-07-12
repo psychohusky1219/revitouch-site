@@ -1,0 +1,6 @@
+import { bookUrl } from "../data";
+
+export function Header(){return <><div className="announcement">Women-owned wellness studio · New York City <a href="tel:+19178913456">Call or text (917) 891-3456</a></div><header className="site-header"><a className="brand" href="/" aria-label="ReviTouch home"><img src="/images/logo.png" alt="ReviTouch Massage Therapy" /></a><nav aria-label="Main navigation"><a href="/treatments">Treatments</a><a href="/about">About</a><a href="/pricing">Pricing</a><a href="/reviews">Reviews</a><a href="/contact">Contact</a></nav><a className="button small" href={bookUrl}>Book now</a></header></>}
+export function Footer(){return <footer><a className="footer-brand" href="/"><img src="/images/logo.png" alt="ReviTouch" /></a><div><p>Professional massage therapy in New York City.</p><p>© 2026 ReviTouch. All rights reserved.</p></div><div className="footer-links"><a href="/treatments">Treatments</a><a href="/about">About</a><a href="/contact">Contact</a><a href="https://www.revitouch.com/gift-card">Gift cards</a></div></footer>}
+export function MobileBar(){return <div className="mobile-bar"><a href="tel:+19178913456">Call</a><a href={bookUrl}>Book now</a></div>}
+export function PageShell({children}:{children:React.ReactNode}){return <main><Header />{children}<Footer /><MobileBar /></main>}
