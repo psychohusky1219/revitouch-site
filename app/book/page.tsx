@@ -23,7 +23,7 @@ export default function BookPage() {
 
     <section className="booking-extras">
       <article className="booking-laser-card"><div><p className="eyebrow light">Laser services</p><h2>Start with a complimentary consultation.</h2><p>Meet with a ReviTouch technician to discuss your skin type, goals, treatment area, and a personalized plan for laser hair removal or skin-focused treatments.</p></div><div><a className="button light-button" href="/contact">Request a consultation</a><a className="soft-link" href="/laser">Explore laser services →</a></div></article>
-      <article className="booking-gift-card"><p className="eyebrow">Give the gift of care</p><h3>ReviTouch gift cards</h3><p>Choose a flexible amount for someone who could use time to feel better and move more freely.</p><a className="text-link" href="https://www.revitouch.com/gift-card">Shop gift cards →</a></article>
+      <article className="booking-gift-card"><p className="eyebrow">Give the gift of care</p><h3>ReviTouch gift cards</h3><p>Choose a flexible amount for someone who could use time to feel better and move more freely.</p><a className="text-link" href="/gift-cards">Shop gift cards →</a></article>
     </section>
 
     <section className="booking-help">
