@@ -13,6 +13,8 @@ export default function Home() {
 
     <section className="home-story"><div><p className="eyebrow light">Care with intention</p><h2>Your appointment should feel personal from the start.</h2><p>We listen first, then shape the pressure, techniques, and session length around your body and your goals.</p><a className="button light-button" href="/about">Our approach</a></div><img src="/images/sports.jpg" alt="Targeted professional massage treatment" /></section>
 
+    <section className="home-laser"><img src="/images/laser-hero.jpg" alt="Professional laser hair removal treatment at ReviTouch" /><div><p className="eyebrow">Also at ReviTouch</p><h2>Laser hair removal and skin treatments.</h2><p>Explore Cynosure Elite+ laser hair removal, photo rejuvenation, laser facials and dark spot treatments—with a free consultation to personalize your plan.</p><a className="button" href="/laser">Explore laser services</a></div></section>
+
     <section className="home-review"><p className="stars">★★★★★</p><blockquote>“Every session feels intentional, professional, and completely tailored to what I need that day.”</blockquote><a className="text-link" href="/reviews">Read client stories →</a></section>
 
     <section className="home-cta"><div><p className="eyebrow">A simple next step</p><h2>Start with the time you have.</h2><p>If ReviTouch feels like the right fit, see current pricing, choose an appointment, or contact us with questions.</p></div><div><a className="button" href={bookUrl}>View availability</a><a className="text-link" href="/pricing">See pricing →</a></div></section>
