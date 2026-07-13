@@ -1,16 +1,18 @@
 import type { Metadata } from "next";
 import { PageShell } from "../components/SiteChrome";
-import { bookingOptions } from "./services";
+import { getSiteContent } from "../cms";
 
 export const metadata: Metadata = {
   title: "Book a Massage or Laser Consultation | ReviTouch NYC",
   description: "Choose a ReviTouch massage treatment or begin with a complimentary laser consultation in New York City.",
 };
 
-export default function BookPage() {
+export default async function BookPage() {
+  const {appointments, general} = await getSiteContent();
+  const bookingOptions = appointments.filter((option) => option.showOnBookingPage !== false && option.calendarUrl);
   return <PageShell>
     <section className="booking-hero">
-      <div><p className="eyebrow">Book your ReviTouch treatment</p><h1>Choose the time.<br /><em>We’ll shape the care.</em></h1><p>Start with the session length that fits your day. Then choose an available date and time in the live ReviTouch calendar.</p><a className="text-link" href="tel:+19178913456">Questions? Call or text (917) 891-3456</a></div>
+      <div><p className="eyebrow">Book your ReviTouch treatment</p><h1>Choose the time.<br /><em>We’ll shape the care.</em></h1><p>Start with the session length that fits your day. Then choose an available date and time in the live ReviTouch calendar.</p><a className="text-link" href={`tel:${general.phoneLink}`}>Questions? Call or text {general.phoneDisplay}</a></div>
       <div className="booking-hero-image"><img src="/images/hero.jpg" alt="Relaxing personalized massage treatment at ReviTouch" /><div><strong>Not sure what to book?</strong><span>A 60-minute treatment is a flexible place to begin.</span></div></div>
     </section>
 
@@ -27,7 +29,7 @@ export default function BookPage() {
     </section>
 
     <section className="booking-help">
-      <div><p className="eyebrow light">A little flexibility</p><h2>Don’t see the time you need?</h2><p>Call or text us. We may be able to fit you in even when your preferred appointment is not shown online.</p></div><a className="button light-button" href="tel:+19178913456">Call (917) 891-3456</a>
+      <div><p className="eyebrow light">A little flexibility</p><h2>Don’t see the time you need?</h2><p>Call or text us. We may be able to fit you in even when your preferred appointment is not shown online.</p></div><a className="button light-button" href={`tel:${general.phoneLink}`}>Call {general.phoneDisplay}</a>
     </section>
 
     <section className="booking-policy"><div><span>Cancellation policy</span><h3>Please give at least 12 hours’ notice.</h3></div><p>Cancellations made within 12 hours of an appointment may be charged the full treatment amount.</p></section>

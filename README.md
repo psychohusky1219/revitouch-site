@@ -15,7 +15,9 @@ Create a form at formspree.io, copy the endpoint shown for the form, and set `NE
 
 ## Sanity
 
-Sanity is optional for the first release. When the client needs to edit treatments, prices, reviews, or staff without VS Code, create a Sanity project and set the project ID and dataset variables. The content model can then replace the local arrays in `app/page.tsx`.
+The ReviTouch editor is available at [revitouch.sanity.studio](https://revitouch.sanity.studio/). Sign in with an invited Sanity account, open **Website Content**, make changes, and select **Publish**. The website refreshes published content within approximately one minute.
+
+Editable content includes business details, homepage hero content, massage treatments, appointments and prices, laser pricing, client reviews, gift-card options, social links, and footer text. The Studio source is in `studio/`.
 
 ## Trustindex
 

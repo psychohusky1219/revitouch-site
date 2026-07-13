@@ -1,9 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { bookingOptions } from "../services";
+import type { Appointment } from "../../cms";
 
-export function ScheduleSwitcher({ initialSlug }: { initialSlug: string }) {
+type BookingOption = Appointment & {calendarUrl: string};
+
+export function ScheduleSwitcher({ initialSlug, bookingOptions }: { initialSlug: string; bookingOptions: BookingOption[] }) {
   const initialOption = bookingOptions.find((option) => option.slug === initialSlug) ?? bookingOptions[0];
   const [selectedSlug, setSelectedSlug] = useState<string>(initialOption.slug);
   const selectedOption = bookingOptions.find((option) => option.slug === selectedSlug) ?? bookingOptions[0];

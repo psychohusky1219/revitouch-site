@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PageShell } from "../components/SiteChrome";
+import { getSiteContent } from "../cms";
 
 export const metadata: Metadata = {
   title: "Massage Gift Cards | ReviTouch NYC",
@@ -7,24 +8,16 @@ export const metadata: Metadata = {
 };
 
 const checkoutUrl = "https://www.revitouch.com/gift-card";
-const giftCards = [
-  { amount: "$40", note: "A thoughtful contribution toward focused care" },
-  { amount: "$80", note: "Perfect for a focused 30-minute treatment" },
-  { amount: "$130", note: "Give a restorative 45-minute treatment" },
-  { amount: "$160", note: "Our classic 60-minute massage experience", featured: true },
-  { amount: "$200", note: "More time to unwind with a 75-minute treatment" },
-  { amount: "$235", note: "A complete 90-minute restorative session" },
-  { amount: "$320", note: "Two 60-minute treatments or flexible future care" },
-];
 
-export default function GiftCardsPage() {
+export default async function GiftCardsPage() {
+  const {giftCards, general} = await getSiteContent();
   return <PageShell>
     <section className="gift-hero">
       <div>
         <p className="eyebrow">A thoughtful way to care</p>
         <h1>Give them time<br /><em>to feel better.</em></h1>
         <p>A ReviTouch gift card gives someone you care about the freedom to choose the treatment and time that feels right for them.</p>
-        <div className="actions"><a className="button" href="#choose-gift-card">Choose a gift card</a><a className="text-link" href="tel:+19178913456">Questions? Call (917) 891-3456</a></div>
+        <div className="actions"><a className="button" href="#choose-gift-card">Choose a gift card</a><a className="text-link" href={`tel:${general.phoneLink}`}>Questions? Call {general.phoneDisplay}</a></div>
       </div>
       <div className="gift-card-art" role="img" aria-label="ReviTouch gift card"><span>ReviTouch</span><strong>Time to feel better.</strong><small>Massage therapy · New York City</small><i /></div>
     </section>
@@ -57,6 +50,6 @@ export default function GiftCardsPage() {
       <div><article><span>01</span><h3>Choose an amount</h3><p>Select one of the seven available values, from $40 to $320.</p></article><article><span>02</span><h3>Complete checkout</h3><p>Finish the purchase through ReviTouch’s existing secure checkout.</p></article><article><span>03</span><h3>Give time to restore</h3><p>The recipient can choose the care and appointment that suits them.</p></article></div>
     </section>
 
-    <section className="booking-help gift-help"><div><p className="eyebrow light">Need a hand?</p><h2>We’re happy to help.</h2><p>Call or text ReviTouch with questions about amounts, purchasing, or using a gift card.</p></div><a className="button light-button" href="tel:+19178913456">Call (917) 891-3456</a></section>
+    <section className="booking-help gift-help"><div><p className="eyebrow light">Need a hand?</p><h2>We’re happy to help.</h2><p>Call or text ReviTouch with questions about amounts, purchasing, or using a gift card.</p></div><a className="button light-button" href={`tel:${general.phoneLink}`}>Call {general.phoneDisplay}</a></section>
   </PageShell>;
 }

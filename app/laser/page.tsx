@@ -1,17 +1,11 @@
 import type { Metadata } from "next";
 import { PageShell } from "../components/SiteChrome";
+import { getSiteContent } from "../cms";
 
 export const metadata: Metadata = {
   title: "Laser Hair Removal & Skin Treatments | ReviTouch NYC",
   description: "Explore ReviTouch laser hair removal, photo rejuvenation, laser facials and dark spot treatments in New York City's Financial District.",
 };
-
-const hairRemoval = [
-  { size: "Small area", price: "$49", packagePrice: "Package of 6 · $220", areas: ["Areola", "Upper lip", "Chin", "Ears", "Forehead", "Inner butt", "Fingers", "Toes"] },
-  { size: "Medium area", price: "$99", packagePrice: "Package of 6 · $445", areas: ["Bikini line + happy trail", "Upper arms", "Lower arms", "Underarms", "Neck", "Full butt"] },
-  { size: "Large area", price: "$139", packagePrice: "Package of 6 · $625", areas: ["Brazilian", "Upper legs", "Lower legs", "Shoulders", "Full arms", "Full face"] },
-  { size: "X-large area", price: "$229", packagePrice: "Package of 6 · $1,030", areas: ["Full legs", "Full back + butt"] },
-];
 
 const faqs = [
   ["Does laser hair removal hurt?", "Sensation varies with hair density and thickness. Many clients describe a brief stinging feeling, while others feel very little. The Cynosure Elite+ is paired with a Zimmer cooling system to help minimize discomfort."],
@@ -22,10 +16,11 @@ const faqs = [
   ["What payment methods are accepted?", "ReviTouch accepts cash, credit cards, PayPal, Apple Pay, Google Pay and tap-to-pay."],
 ];
 
-export default function LaserServices() {
+export default async function LaserServices() {
+  const {laserPricing: hairRemoval, general} = await getSiteContent();
   return <PageShell>
     <section className="laser-hero">
-      <div><p className="eyebrow">Laser services in the Financial District</p><h1>Smoother skin.<br /><em>A plan made for you.</em></h1><p>Laser hair removal and skin-focused treatments using the Cynosure Elite+ platform, with a complimentary consultation before you begin.</p><div className="actions"><a className="button" href="/contact">Schedule a free consultation</a><a className="text-link" href="tel:+19178913456">Call (917) 891-3456</a></div></div>
+      <div><p className="eyebrow">Laser services in the Financial District</p><h1>Smoother skin.<br /><em>A plan made for you.</em></h1><p>Laser hair removal and skin-focused treatments using the Cynosure Elite+ platform, with a complimentary consultation before you begin.</p><div className="actions"><a className="button" href="/contact">Schedule a free consultation</a><a className="text-link" href={`tel:${general.phoneLink}`}>Call {general.phoneDisplay}</a></div></div>
       <img src="/images/laser-hero.jpg" alt="ReviTouch technician providing a professional laser hair removal treatment" />
     </section>
 
