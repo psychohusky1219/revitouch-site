@@ -1,4 +1,4 @@
-export const bookUrl = "https://www.revitouch.com/book-online";
+export const bookUrl = "/book";
 export const services = [
   { name: "Sports Massage", image: "/images/sports.jpg", text: "Targeted treatment for flexibility, recovery, trigger points, and specific areas of discomfort.", detail: "Sports massage combines focused pressure, trigger-point therapy, and myofascial techniques. It is designed for active bodies, desk-bound bodies, and anyone looking to improve mobility or address a stubborn problem area." },
   { name: "Deep Tissue Massage", image: "/images/deep-tissue.jpg", text: "Slow, focused movement and firm pressure designed to reach deeper layers of muscle tissue.", detail: "Deep tissue work uses deliberate movement and firmer pressure to address persistent tension. Your therapist adjusts throughout the session so the treatment remains productive and within your comfort level." },
