@@ -1,21 +1,11 @@
 import type { Metadata } from "next";
 import { PageShell } from "../components/SiteChrome";
+import { bookingOptions } from "./services";
 
 export const metadata: Metadata = {
   title: "Book a Massage or Laser Consultation | ReviTouch NYC",
   description: "Choose a ReviTouch massage treatment or begin with a complimentary laser consultation in New York City.",
 };
-
-const bookingOptions = [
-  { name: "15 Minute Treatment", duration: "15 min", price: "$40", note: "A focused reset for one area when time is tight.", link: "https://www.revitouch.com/booking-calendar/15-min-treatment" },
-  { name: "Cupping Therapy", duration: "20 min", price: "$40", note: "A targeted cupping session for tight or overworked tissue.", link: "https://www.revitouch.com/booking-calendar/cupping-therapy-20-min" },
-  { name: "30 Minute Treatment", duration: "30 min", price: "$80", note: "Focused hands-on care for a specific concern or problem area.", link: "https://www.revitouch.com/booking-calendar/30-min-treatment" },
-  { name: "45 Minute Treatment", duration: "45 min", price: "$130", note: "More time for focused work across several connected areas.", link: "https://www.revitouch.com/booking-calendar/45-min-treatment" },
-  { name: "60 Minute Treatment", duration: "1 hr", price: "$160", note: "A balanced full session with time for personalized, restorative care.", link: "https://www.revitouch.com/booking-calendar/60-min-treatment", popular: true },
-  { name: "Hot Stones Massage", duration: "1 hr", price: "$190", note: "Warm stones and skilled touch for muscular ease and deep relaxation.", link: "https://www.revitouch.com/booking-calendar/hot-stones-massage" },
-  { name: "75 Minute Treatment", duration: "1 hr 15 min", price: "$200", note: "Extra time for detailed treatment and a more complete reset.", link: "https://www.revitouch.com/booking-calendar/75-min-treatment" },
-  { name: "90 Minute Massage", duration: "1 hr 30 min", price: "$235", note: "The most spacious option for comprehensive full-body attention.", link: "https://www.revitouch.com/booking-calendar/90-min-massage" },
-];
 
 export default function BookPage() {
   return <PageShell>
@@ -28,7 +18,7 @@ export default function BookPage() {
 
     <section className="booking-services">
       <div className="section-head"><div><p className="eyebrow">Massage appointments</p><h2>How much time does your body need?</h2></div><p>Every appointment is personalized. The duration simply determines how much time your therapist has to focus, restore, and respond to what your body needs that day.</p></div>
-      <div className="booking-card-grid">{bookingOptions.map((option) => <article className={option.popular ? "popular" : ""} key={option.name}>{option.popular && <span className="popular-label">Most popular</span>}<div className="booking-card-top"><span>{option.duration}</span><strong>{option.price}</strong></div><h3>{option.name}</h3><p>{option.note}</p><a href={option.link}>View available times <span>→</span></a></article>)}</div>
+      <div className="booking-card-grid">{bookingOptions.map((option) => <article className={"popular" in option && option.popular ? "popular" : ""} key={option.name}>{"popular" in option && option.popular && <span className="popular-label">Most popular</span>}<div className="booking-card-top"><span>{option.duration}</span><strong>{option.price}</strong></div><h3>{option.name}</h3><p>{option.note}</p><a href={`/book/schedule?service=${option.slug}`}>View available times <span>→</span></a></article>)}</div>
     </section>
 
     <section className="booking-extras">
